@@ -59,11 +59,24 @@ def main():
                     min_pose_score=0.15)
 
                 keypoint_coords *= output_scale
+                
 
                 # TODO this isn't particularly fast, use GL for drawing and display someday...
                 overlay_image = posenet.draw_skel_and_kp(
                     display_image, pose_scores, keypoint_scores, keypoint_coords,
                     min_pose_score=0.15, min_part_score=0.1)
+                overlay_image = cv2.rectangle(
+                    overlay_image,
+                    (
+                        775,
+                        int(keypoint_coords[0,5,0])+10
+                    ),
+                    (
+                        825,
+                        int(keypoint_coords[0,14,0])
+                    ),
+                    (255,255,255),5
+                )
 
                 cv2.imshow('posenet', overlay_image)
                 frame_count += 1
