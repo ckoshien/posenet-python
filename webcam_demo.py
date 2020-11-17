@@ -69,7 +69,7 @@ def main():
                     overlay_image,
                     (
                         775,
-                        int(keypoint_coords[0,5,0])+10
+                        int((keypoint_coords[0,5,0]/2 + keypoint_coords[0,11,0]/2))
                     ),
                     (
                         825,
